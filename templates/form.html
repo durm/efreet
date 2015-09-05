@@ -1,0 +1,22 @@
+<form action="{{ url_for('calc') }}" method="post">
+    <legend>Тест на определение уровня финансового IQ</legend>
+    <ol>
+        {% for question in questions %}
+            {% set qn=loop.index %}
+            <li>
+                <p>{{ question.0 }}</p>
+                <ul>
+                    {% for answer in question.1 %}
+                        <li>
+                        <label>
+                            <input type="radio" name="question{{ qn }}" value="{{ answer.1 }}"/>
+                            {{ answer.0 }}
+                        </label>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ol>
+    <input type="submit"/>
+</form>
